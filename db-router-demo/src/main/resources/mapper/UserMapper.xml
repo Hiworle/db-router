@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="site.penghao.mapper.UserMapper">
+
+    <!-- 定义查询语句 -->
+    <select id="selectById" parameterType="int" resultType="site.penghao.pojo.User">
+        SELECT id, name, password
+        FROM user
+        WHERE id = #{id}
+    </select>
+
+    <!-- 定义插入语句 -->
+    <insert id="insert" parameterType="site.penghao.pojo.User">
+        INSERT INTO user (id, name, password)
+        VALUES (#{id}, #{name}, #{password})
+    </insert>
+
+    <!-- 定义更新语句 -->
+    <update id="update" parameterType="site.penghao.pojo.User">
+        UPDATE user
+        SET name = #{name},
+            password = #{password}
+        WHERE id = #{id}
+    </update>
+
+    <!-- 定义删除语句 -->
+    <delete id="delete" parameterType="int">
+        DELETE FROM user
+        WHERE id = #{id}
+    </delete>
+
+</mapper>
